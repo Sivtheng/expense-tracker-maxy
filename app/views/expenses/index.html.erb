@@ -1,5 +1,9 @@
 <h1>Expenses</h1>
 
+<%= form_with(url: logout_path, method: :post) do %>
+    <%= submit_tag 'Logout', class: 'logout' %>
+<% end %>
+
 <%= link_to 'New Expense', new_expense_path %>
 
 <table>
