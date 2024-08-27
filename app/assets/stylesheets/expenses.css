@@ -1,0 +1,17 @@
+/* app/assets/stylesheets/expenses.css */
+
+.expense-container {
+    padding: 20px;
+}
+
+h2 {
+    color: #3498db;
+}
+
+.btn {
+    background-color: #3498db;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}

@@ -1,0 +1,17 @@
+/* app/assets/stylesheets/categories.css */
+
+.category-container {
+    padding: 20px;
+}
+
+h2 {
+    color: #2ecc71;
+}
+
+.btn {
+    background-color: #2ecc71;
+}
+
+.btn:hover {
+    background-color: #27ae60;
+}

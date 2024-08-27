@@ -1,0 +1,19 @@
+/* app/assets/stylesheets/login.css */
+
+.login-container {
+    max-width: 400px;
+    padding: 20px;
+}
+
+.login-box {
+    width: 100%;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.alert {
+    background-color: #e74c3c;
+    color: #fff;
+}
