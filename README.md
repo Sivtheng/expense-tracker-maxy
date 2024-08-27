@@ -8,6 +8,7 @@ Things you may want to cover:
 * Ruby version
 - ruby 3.2.2
 - Rails 7.2.1
+- Rack version 3.1.7
 
 * System dependencies
 
