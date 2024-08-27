@@ -7,9 +7,9 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       Rails.logger.debug("User logged in: #{user.id}")
-      redirect_to expenses_path, notice: 'Logged in successfully.'
+      redirect_to expenses_path, notice: "Logged in successfully."
     else
-      flash.now[:alert] = 'Invalid name or password'
+      flash.now[:alert] = "Invalid name or password"
       render :new
     end
   end
@@ -18,6 +18,6 @@ class SessionsController < ApplicationController
     Rails.logger.debug("Logging out user: #{session[:user_id]}")
     session[:user_id] = nil
     reset_session
-    redirect_to login_path, notice: 'Logged out successfully.'
+    redirect_to login_path, notice: "Logged out successfully."
   end
 end

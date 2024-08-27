@@ -5,17 +5,29 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true %>
   </head>
 
   <body>
-    <% if flash[:notice] %>
-      <p class="notice"><%= flash[:notice] %></p>
-    <% elsif flash[:alert] %>
-      <p class="alert"><%= flash[:alert] %></p>
-    <% end %>
+    <div id="flash-messages">
+      <% flash.each do |key, message| %>
+        <div class="flash <%= key %>"><%= message %></div>
+      <% end %>
+    </div>
 
     <%= yield %>
+
+    <script>
+      // JavaScript to automatically hide flash messages after a few seconds
+      document.addEventListener("DOMContentLoaded", function() {
+        const flashMessages = document.querySelectorAll('#flash-messages .flash');
+        flashMessages.forEach(flash => {
+          setTimeout(() => {
+            flash.style.display = 'none';
+          }, 3000); // 3 seconds
+        });
+      });
+    </script>
   </body>
 </html>
