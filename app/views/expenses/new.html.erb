@@ -14,23 +14,24 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :amount %>
+    <%= form.number_field :amount, step: :any %>
+  </div>
+
+  <div class="field">
     <%= form.label :description %>
     <%= form.text_field :description %>
   </div>
 
   <div class="field">
-    <%= form.label :amount %>
-    <%= form.number_field :amount %>
-  </div>
-
-  <div class="field">
     <%= form.label :date %>
-    <%= form.date_select :date %>
+    <%= form.date_field :date %>
   </div>
 
   <div class="field">
-    <%= form.label :category_id %>
-    <%= form.collection_select :category_id, Category.all, :id, :name %>
+    <%= form.label :category_id, "Select a Category" %>
+    <%= form.collection_select(:category_id, Category.all, :id, :name, prompt: "Select a Category") %>
+    <%= link_to 'Add Category', new_category_path, class: 'button' %>
   </div>
 
   <div class="actions">
