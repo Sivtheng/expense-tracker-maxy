@@ -1,19 +1,81 @@
-/* app/assets/stylesheets/login.css */
+/* Ensure the body takes the full height of the viewport */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #1E201E; /* Darkest color */
+}
 
 .login-container {
-    max-width: 400px;
-    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .login-box {
+    background-color: #3C3D37; /* Slightly lighter color */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
+    max-width: 400px;
+    text-align: center;
 }
 
 h2 {
     margin-bottom: 20px;
+    color: #ECDFCC; /* Lightest color */
 }
 
 .alert {
-    background-color: #e74c3c;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.alert-danger {
+    background-color: #DC3545; /* Red for errors */
     color: #fff;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ECDFCC; /* Lightest color */
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #697565; /* Middle color */
+    box-sizing: border-box;
+}
+
+.btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-primary {
+    background-color: #697565; /* Middle color */
+    color: #ECDFCC; /* Lightest color */
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #556555; /* Slightly darker shade */
 }

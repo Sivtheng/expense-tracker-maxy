@@ -1,36 +1,40 @@
 <%= stylesheet_link_tag 'expenses', media: 'all', 'data-turbo-track': 'reload' %>
 
-<h1>Expenses</h1>
-
-<%= form_with(url: logout_path, method: :post) do %>
-    <%= submit_tag 'Logout', class: 'logout' %>
-<% end %>
-
-<%= link_to 'New Expense', new_expense_path %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Amount</th>
-      <th>Date</th>
-      <th>Category</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @expenses.each do |expense| %>
-      <tr>
-        <td><%= expense.description %></td>
-        <td><%= expense.amount %></td>
-        <td><%= expense.date %></td>
-        <td><%= expense.category.name %></td>
-        <td>
-          <%= link_to 'Edit', edit_expense_path(expense) %> |
-          <%= link_to 'Destroy', expense_path(expense), method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
-      </tr>
+<div class="expenses-container">
+  <div class="expenses-header">
+    <h1 class="expenses-title">Expenses</h1>
+    <%= form_with(url: logout_path, method: :post) do %>
+      <%= submit_tag 'Logout', class: 'logout' %>
     <% end %>
-  </tbody>
-</table>
+  </div>
+
+  <div class="new-expense-button-container">
+    <%= link_to 'New Expense', new_expense_path, class: 'new-expense-button' %>
+  </div>
+
+  <table class="expenses-table">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @expenses.each do |expense| %>
+        <tr>
+          <td><%= expense.description %></td>
+          <td><%= expense.amount %></td>
+          <td><%= expense.date %></td>
+          <td><%= expense.category.name %></td>
+          <td>
+            <%= link_to 'Edit', edit_expense_path(expense) %> |
+            <%= link_to 'Destroy', expense_path(expense), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

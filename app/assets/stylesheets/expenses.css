@@ -1,17 +1,109 @@
-/* app/assets/stylesheets/expenses.css */
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #1E201E;
+}
 
-.expense-container {
+.expenses-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
     padding: 20px;
+    box-sizing: border-box;
 }
 
-h2 {
-    color: #3498db;
+.expenses-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.btn {
-    background-color: #3498db;
+.logout {
+    background-color: #697565; /* Middle color */
+    color: #ECDFCC; /* Lightest color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    
 }
 
-.btn:hover {
-    background-color: #2980b9;
+.logout:hover {
+    background-color: #556555;
+}
+
+.new-expense-button {
+    background-color: #697565;
+    color: #ECDFCC;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.new-expense-button:hover {
+    background-color: #556555;
+}
+
+.expenses-table {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
+    max-height: 100px; /* Adjust this value as needed */
+    color: #ECDFCC;
+}
+
+.expenses-title {
+    text-align: center;
+    font-size: 32px; /* Adjust the font size as needed */
+    color: #ECDFCC;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #697565;
+    border-spacing: 0;
+    margin-top: 30px;
+}
+
+thead {
+    height: 40px; /* Adjust this value as needed */
+}
+
+tbody {
+    height: 100%; /* Set the height to 100% of the parent container */
+}
+
+th, td {
+    padding: 8px 12px;
+    text-align: left;
+    border: 1px solid #697565;
+}
+
+thead tr {
+    background-color: #3C3D37;
+}
+
+th {
+    color: #ECDFCC;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #333;
+}
+
+tr:hover {
+    background-color: #444;
 }
