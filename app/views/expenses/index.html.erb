@@ -26,7 +26,7 @@
       <% @expenses.each do |expense| %>
         <tr>
           <td><%= expense.description %></td>
-          <td><%= expense.amount %></td>
+          <td><%= number_to_currency(expense.amount, unit: '$') %></td>
           <td><%= expense.date %></td>
           <td><%= expense.category.name %></td>
           <td class="edit-destroy">
