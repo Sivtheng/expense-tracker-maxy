@@ -1,0 +1,73 @@
+/* Ensure the body takes the full height of the viewport */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #1E201E; /* Darkest color */
+}
+
+.expense-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.expense-box {
+    background-color: #3C3D37; /* Slightly lighter color */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #ECDFCC; /* Lightest color */
+}
+
+.expense-details p {
+    margin: 10px 0;
+    color: #ECDFCC; /* Lightest color */
+    text-align: left;
+}
+
+
+.actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    color: #ECDFCC; /* Lightest color - for text */
+}
+
+.btn-danger {
+    background-color: #D9534F; /* Danger color for delete button */
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #C9302C; /* Slightly darker shade */
+}
+
+.btn-secondary {
+    background-color: #4a4a4a; /* Slightly darker for secondary button */
+    border: none;
+    margin-left: 10px; /* Space between buttons */
+}
+
+.btn-secondary:hover {
+    background-color: #333; /* Darker shade for hover effect */
+}

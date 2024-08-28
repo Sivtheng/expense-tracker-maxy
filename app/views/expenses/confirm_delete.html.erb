@@ -1,0 +1,21 @@
+<%= stylesheet_link_tag 'confirm_delete', media: 'all', 'data-turbo-track': 'reload' %>
+
+<div class="expense-container">
+  <div class="expense-box">
+    <h1>Are you sure you want to delete this expense?</h1>
+
+    <div class="expense-details">
+      <p>Description: <%= @expense.description %></p>
+      <p>Amount: <%= @expense.amount %></p>
+      <p>Date: <%= @expense.date %></p>
+      <p>Category: <%= @expense.category.name %></p>
+    </div>
+
+    <%= form_with url: expense_path(@expense), method: :delete, data: { turbo_confirm: 'Are you sure you want to delete this expense?' } do |form| %>
+      <div class="actions">
+        <%= form.submit 'Delete', class: 'btn btn-danger' %>
+        <%= link_to 'Cancel', expenses_path, class: 'btn btn-secondary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

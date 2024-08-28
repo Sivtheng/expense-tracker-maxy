@@ -31,7 +31,7 @@
           <td><%= expense.category.name %></td>
           <td class="edit-destroy">
             <%= link_to 'Edit', edit_expense_path(expense), class: 'btn-edit' %> |
-            <%= link_to 'Destroy', expense_path(expense), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-delete' %>
+            <%= link_to 'Delete', confirm_delete_expense_path(expense), class: 'btn-delete' %>
           </td>
         </tr>
       <% end %>

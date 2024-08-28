@@ -35,6 +35,10 @@ class ExpensesController < ApplicationController
     end
   end
 
+  def confirm_delete
+    @expense = Expense.find(params[:id])
+  end
+
   def destroy
     @expense = Expense.find(params[:id])
     @expense.destroy
