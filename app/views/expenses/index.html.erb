@@ -29,9 +29,9 @@
           <td><%= expense.amount %></td>
           <td><%= expense.date %></td>
           <td><%= expense.category.name %></td>
-          <td>
-            <%= link_to 'Edit', edit_expense_path(expense) %> |
-            <%= link_to 'Destroy', expense_path(expense), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <td class="edit-destroy">
+            <%= link_to 'Edit', edit_expense_path(expense), class: 'btn-edit' %> |
+            <%= link_to 'Destroy', expense_path(expense), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-delete' %>
           </td>
         </tr>
       <% end %>

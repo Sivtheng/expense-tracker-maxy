@@ -96,3 +96,40 @@ tr:nth-child(even) {
 tr:hover {
     background-color: #444;
 }
+
+/* Style for action links */
+.edit-destroy {
+    text-decoration: none; /* Remove underline */
+    font-size: 14px; /* Font size for links */
+    font-weight: bold; /* Bold text for better visibility */
+    padding: 6px 12px; /* Add padding to give a button-like feel */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s, color 0.3s; /* Smooth color transition */
+}
+
+/* Edit link style */
+.btn-edit {
+    color: #004d00; /* Dark green */
+}
+
+.btn-edit:hover {
+    color: #002d00; /* Darker green on hover */
+}
+
+/* Delete link style */
+.btn-delete {
+    color: #d40000; /* Dark red */
+}
+
+.btn-delete:hover {
+    color: #a30000; /* Darker red on hover */
+}
+
+a {
+    text-decoration: none; /* Remove underline */
+}
+
+/* Optional: Remove visited link styling */
+a:visited {
+    color: inherit; /* Keep the color same as non-visited links */
+}
