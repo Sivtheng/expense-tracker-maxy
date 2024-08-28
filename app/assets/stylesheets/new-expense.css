@@ -1,0 +1,110 @@
+/* Ensure the body takes the full height of the viewport */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #1E201E; /* Darkest color */
+}
+
+/* Center the container vertically and horizontally */
+.expense-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* Styling for the form container */
+.expense-box {
+    background-color: #3C3D37; /* Slightly lighter color */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Styling for the main title */
+h1 {
+    margin-bottom: 20px;
+    color: #ECDFCC; /* Lightest color */
+    font-size: 24px;
+}
+
+/* Styling for error messages */
+#error_explanation {
+    background-color: #DC3545; /* Red for errors */
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Styling for each form group */
+.field {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* Styling for labels */
+.field label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ECDFCC; /* Lightest color */
+    font-weight: bold;
+}
+
+/* Styling for input and select fields */
+.field input[type="number"],
+.field input[type="text"],
+.field input[type="date"],
+.field select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #697565; /* Middle color */
+    background-color: #1E201E; /* Match input background with body */
+    color: #ECDFCC; /* Lightest color */
+    box-sizing: border-box;
+}
+
+/* Styling for buttons */
+.actions input[type="submit"],
+.button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #697565; /* Middle color */
+    color: #ECDFCC; /* Lightest color */
+    border: none;
+}
+
+.button-style {
+    margin-top: 25px;
+}
+
+.actions input[type="submit"]:hover,
+.button:hover {
+    background-color: #556555; /* Slightly darker shade */
+}
+
+/* Styling for the 'Back' link */
+.link-back {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #ECDFCC;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.link-back:hover {
+    color: #C0B8A8;
+}

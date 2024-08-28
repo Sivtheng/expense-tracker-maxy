@@ -20,26 +20,7 @@ body {
     margin-bottom: 20px;
 }
 
-.logout {
-    background-color: #697565; /* Middle color */
-    color: #ECDFCC; /* Lightest color */
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    text-decoration: none;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    
-}
-
-.logout:hover {
-    background-color: #556555;
-}
-
-.new-expense-button {
+.logout, .new-expense-button {
     background-color: #697565;
     color: #ECDFCC;
     border: none;
@@ -48,11 +29,20 @@ body {
     cursor: pointer;
     font-size: 16px;
     text-decoration: none;
-    margin-bottom: 20px;
 }
 
-.new-expense-button:hover {
+.logout {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.logout:hover, .new-expense-button:hover {
     background-color: #556555;
+}
+
+.new-expense-button {
+    margin-bottom: 20px;
 }
 
 .expenses-table {
@@ -73,7 +63,6 @@ table {
     width: 100%;
     border-collapse: collapse;
     border: 1px solid #697565;
-    border-spacing: 0;
     margin-top: 30px;
 }
 
