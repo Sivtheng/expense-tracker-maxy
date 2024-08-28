@@ -2,7 +2,7 @@ class ExpensesController < ApplicationController
   before_action :require_login, except: [ :new, :create ]
 
   def index
-    @expenses = Expense.all
+    @expenses = Expense.order(date: :asc)
   end
 
   def show
@@ -16,7 +16,7 @@ class ExpensesController < ApplicationController
   def create
     @expense = Expense.new(expense_params)
     if @expense.save
-      redirect_to @expense, notice: "Expense was successfully created."
+      redirect_to expenses_path, notice: "Expense was successfully created."
     else
       render :new
     end
