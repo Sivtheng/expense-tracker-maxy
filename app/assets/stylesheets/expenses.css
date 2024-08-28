@@ -1,3 +1,5 @@
+/* Existing styles */
+
 body {
     height: 100%;
     margin: 0;
@@ -109,7 +111,7 @@ tr:hover {
 
 /* Edit link style */
 .btn-edit {
-    color: #ECDFCC; /* Dark green */
+    color: #004d00; /* Dark green */
 }
 
 .btn-edit:hover {
@@ -132,4 +134,22 @@ a {
 /* Optional: Remove visited link styling */
 a:visited {
     color: inherit; /* Keep the color same as non-visited links */
+}
+
+/* New Monthly Budget Section */
+.monthly-budget-info {
+    background-color: #2C2F2C; /* Slightly different background for the budget info */
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    color: #ECDFCC;
+}
+
+.monthly-budget-info h2 {
+    font-size: 24px; /* Font size for the title */
+    margin: 5px 0;
+}
+
+.monthly-budget-info p {
+    margin: 5px 0; /* Spacing for paragraphs */
 }

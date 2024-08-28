@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post "logout", to: "sessions#destroy"
 
   resources :expenses do
+    patch :update_budget, on: :collection
     member do
       get "confirm_delete"
     end

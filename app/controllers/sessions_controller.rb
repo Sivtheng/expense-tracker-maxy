@@ -2,8 +2,21 @@ class SessionsController < ApplicationController
   def new
   end
 
+  # def create
+  #   user = User.find_by(name: params[:name])
+  #   if user && user.authenticate(params[:password])
+  #     session[:user_id] = user.id
+  #     Rails.logger.debug("User logged in: #{user.id}")
+  #     redirect_to expenses_path # Redirect without notice
+  #   else
+  #     flash.now[:alert] = "Invalid name or password"
+  #     render :new
+  #   end
+  # end
+
   def create
     user = User.find_by(name: params[:name])
+    Rails.logger.debug("User found: #{user.inspect}") # Debug line
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       Rails.logger.debug("User logged in: #{user.id}")

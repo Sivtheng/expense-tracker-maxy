@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_27_064912) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_28_071438) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -25,7 +25,20 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_27_064912) do
     t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
     t.index ["category_id"], name: "index_expenses_on_category_id"
+    t.index ["user_id"], name: "index_expenses_on_user_id"
+  end
+
+  create_table "monthly_budgets", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "month", null: false
+    t.integer "year", null: false
+    t.decimal "budget", precision: 10, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "month", "year"], name: "index_monthly_budgets_on_user_id_and_month_and_year", unique: true
+    t.index ["user_id"], name: "index_monthly_budgets_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -36,4 +49,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_27_064912) do
   end
 
   add_foreign_key "expenses", "categories"
+  add_foreign_key "expenses", "users"
+  add_foreign_key "monthly_budgets", "users"
 end

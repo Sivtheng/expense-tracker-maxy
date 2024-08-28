@@ -1,8 +1,20 @@
 class ExpensesController < ApplicationController
-  before_action :require_login, except: [ :new, :create ]
+  before_action :authenticate_user!
+  before_action :set_user
 
   def index
-    @expenses = Expense.order(date: :asc)
+    @year = params[:year].to_i
+    @month = params[:month].to_i
+    @year = Date.today.year if @year.zero?
+    @month = Date.today.month if @month.zero?
+
+    # Format month to always have two digits
+    formatted_month = @month.to_s.rjust(2, "0")
+
+    # Use strftime for SQLite-compatible date extraction
+    @expenses = current_user.expenses.where("strftime('%Y', date) = ? AND strftime('%m', date) = ?", @year.to_s, formatted_month)
+    @monthly_budget = current_user.monthly_budgets.find_or_initialize_by(month: @month, year: @year)
+    @total_spent = @expenses.sum(:amount) || 0
   end
 
   def show
@@ -14,9 +26,9 @@ class ExpensesController < ApplicationController
   end
 
   def create
-    @expense = Expense.new(expense_params)
+    @expense = @user.expenses.build(expense_params)
     if @expense.save
-      redirect_to expenses_path, notice: "Expense was successfully created."
+      redirect_to expenses_path(month: @expense.date.month), notice: "Expense was successfully created."
     else
       render :new
     end
@@ -32,6 +44,15 @@ class ExpensesController < ApplicationController
       redirect_to expenses_path, notice: "Expense was successfully updated."
     else
       render :edit
+    end
+  end
+
+  def update_budget
+    @monthly_budget = @user.monthly_budgets.find_or_initialize_by(month: params[:month])
+    if @monthly_budget.update(budget_params)
+      redirect_to expenses_path(month: params[:month]), notice: "Budget was successfully updated."
+    else
+      redirect_to expenses_path(month: params[:month]), alert: "Failed to update budget."
     end
   end
 
@@ -56,5 +77,19 @@ class ExpensesController < ApplicationController
     unless session[:user_id]
       redirect_to login_path, alert: "You must be logged in to access this page."
     end
+  end
+
+  def set_user
+    @user = current_user
+    # Handle the case where @user is nil
+    redirect_to login_path, alert: "You must be logged in to access this page." unless @user
+  end
+
+  def expense_params
+    params.require(:expense).permit(:description, :amount, :date, :category_id)
+  end
+
+  def budget_params
+    params.require(:monthly_budget).permit(:budget)
   end
 end
