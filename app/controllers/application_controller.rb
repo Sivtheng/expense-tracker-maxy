@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
-  allow_browser versions: :modern
-
-  before_action :require_login, except: [:new, :create] # rubocop:disable Layout/SpaceInsideArrayLiteralBrackets
+  allow_browser versions: :modern# rubocop:disable Layout/SpaceInsideArrayLiteralBrackets
 
   helper_method :current_user
 

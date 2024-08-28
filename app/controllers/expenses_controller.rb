@@ -1,6 +1,8 @@
+# app/controllers/expenses_controller.rb
 class ExpensesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user
+  before_action :require_login, except: [ :index, :show ]
 
   def index
     @year = params[:year].to_i
@@ -47,15 +49,6 @@ class ExpensesController < ApplicationController
     end
   end
 
-  def update_budget
-    @monthly_budget = @user.monthly_budgets.find_or_initialize_by(month: params[:month])
-    if @monthly_budget.update(budget_params)
-      redirect_to expenses_path(month: params[:month]), notice: "Budget was successfully updated."
-    else
-      redirect_to expenses_path(month: params[:month]), alert: "Failed to update budget."
-    end
-  end
-
   def confirm_delete
     @expense = Expense.find(params[:id])
   end
@@ -69,7 +62,7 @@ class ExpensesController < ApplicationController
   private
 
   def expense_params
-    params.require(:expense).permit(:category_id, :amount, :date, :description)
+    params.require(:expense).permit(:description, :amount, :date, :category_id)
   end
 
   def require_login
@@ -83,13 +76,5 @@ class ExpensesController < ApplicationController
     @user = current_user
     # Handle the case where @user is nil
     redirect_to login_path, alert: "You must be logged in to access this page." unless @user
-  end
-
-  def expense_params
-    params.require(:expense).permit(:description, :amount, :date, :category_id)
-  end
-
-  def budget_params
-    params.require(:monthly_budget).permit(:budget)
   end
 end

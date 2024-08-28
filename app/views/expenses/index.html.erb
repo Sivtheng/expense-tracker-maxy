@@ -10,12 +10,17 @@
 
   <!-- Monthly Budget Information -->
   <div class="monthly-budget-info">
-    <h2>Summary for <%= Date::MONTHNAMES[@month] %> <%= @year %> (Change date)</h2>
-    <p>Budget: <%= number_to_currency(@monthly_budget.budget || 0, precision: 2) %> (Add Budget)</p>
+    <h2>Summary for <%= Date::MONTHNAMES[@month] %> <%= @year %>
+      <%= link_to '(Change Month)', change_month_path, class: 'btn-edit' %>
+    </h2>
+    <p>Budget: <%= number_to_currency(@monthly_budget.budget || 0, precision: 2) %> 
+      <%= link_to '(Add/Update Budget)', edit_budget_path(month: @month, year: @year), class: 'btn-edit' %>
+    </p>
     <p>Total Spent: <%= number_to_currency(@total_spent || 0, precision: 2) %></p>
-    <% leftover = (@monthly_budget.budget || 0) - (@total_spent || 0) %>
-    <p>Leftover: <%= leftover >= 0 ? number_to_currency(leftover, precision: 2) : "Over Budget" %> </p>
+      <% leftover = (@monthly_budget.budget || 0) - (@total_spent || 0) %>
+    <p>Leftover: <%= leftover >= 0 ? number_to_currency(leftover, precision: 2) : 'Over Budget' %></p>
   </div>
+
 
   <div class="new-expense-button-container">
     <%= link_to 'New Expense', new_expense_path, class: 'new-expense-button' %>

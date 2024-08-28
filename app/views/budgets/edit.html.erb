@@ -1,0 +1,19 @@
+<%= stylesheet_link_tag 'month-budget.css', media: 'all', 'data-turbo-track': 'reload' %>
+
+<div class="expense-container">
+  <div class="expense-box">
+    <h1>Edit Budget for <%= Date::MONTHNAMES[@month] %> <%= @year %></h1>
+
+    <%= form_with model: @monthly_budget, url: update_budget_path(month: @month, year: @year), method: :patch, local: true do |f| %>
+      <div class="form-group">
+        <%= f.label :budget, "Budget Amount", class: 'form-label' %>
+        <%= f.number_field :budget, step: '0.01', value: @monthly_budget.budget || 0, class: 'form-control' %>
+      </div>
+      <div class="actions">
+        <%= f.submit 'Save', class: 'btn-primary' %>
+      </div>
+    <% end %>
+
+    <%= link_to 'Back', expenses_path(month: @month, year: @year), class: 'link-back' %>
+  </div>
+</div>
