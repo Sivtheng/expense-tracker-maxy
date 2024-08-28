@@ -1,5 +1,5 @@
 class ExpensesController < ApplicationController
-  before_action :require_login, except: [:new, :create]
+  before_action :require_login, except: [ :new, :create ]
 
   def index
     @expenses = Expense.all
@@ -16,7 +16,7 @@ class ExpensesController < ApplicationController
   def create
     @expense = Expense.new(expense_params)
     if @expense.save
-      redirect_to @expense, notice: 'Expense was successfully created.'
+      redirect_to @expense, notice: "Expense was successfully created."
     else
       render :new
     end
@@ -29,7 +29,7 @@ class ExpensesController < ApplicationController
   def update
     @expense = Expense.find(params[:id])
     if @expense.update(expense_params)
-      redirect_to @expense, notice: 'Expense was successfully updated.'
+      redirect_to expenses_path, notice: "Expense was successfully updated."
     else
       render :edit
     end
@@ -38,7 +38,7 @@ class ExpensesController < ApplicationController
   def destroy
     @expense = Expense.find(params[:id])
     @expense.destroy
-    redirect_to expenses_url, notice: 'Expense was successfully destroyed.'
+    redirect_to expenses_path, notice: "Expense was successfully destroyed."
   end
 
   private
@@ -50,7 +50,7 @@ class ExpensesController < ApplicationController
   def require_login
     Rails.logger.debug("Session user_id: #{session[:user_id]}")
     unless session[:user_id]
-      redirect_to login_path, alert: 'You must be logged in to access this page.'
+      redirect_to login_path, alert: "You must be logged in to access this page."
     end
   end
 end
