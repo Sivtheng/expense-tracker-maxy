@@ -12,7 +12,7 @@ Things you may want to cover to run the application locally:
     > `gem install rails -v 7.2.1`
 - SQLite3
     > `brew install sqlite3`
-- Install Bundler
+- Bundler
     > `gem install bundler`
 
 ## System dependencies
