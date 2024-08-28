@@ -111,7 +111,7 @@ tr:hover {
 
 /* Edit link style */
 .btn-edit {
-    color: #004d00; /* Dark green */
+    color: #ECDFCC; /* Dark green */
 }
 
 .btn-edit:hover {
@@ -125,6 +125,22 @@ tr:hover {
 
 .btn-delete:hover {
     color: #a30000; /* Darker red on hover */
+}
+
+.btn-budget {
+    color: #ECDFCC;
+}
+
+.btn-budget:hover {
+    color: #002d00;
+}
+
+.btn-month {
+    color: #ECDFCC;
+}
+
+.btn-month:hover {
+    color: #002d00;
 }
 
 a {

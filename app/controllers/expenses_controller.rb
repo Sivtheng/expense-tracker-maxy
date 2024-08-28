@@ -3,6 +3,7 @@ class ExpensesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user
   before_action :require_login, except: [ :index, :show ]
+  before_action :find_expense, only: [ :show, :edit, :update, :confirm_delete, :destroy ]
 
   def index
     @year = params[:year].to_i
