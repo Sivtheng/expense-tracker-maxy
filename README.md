@@ -1,27 +1,54 @@
-# README
+# Expense Tracker with Ruby on Rails, version 1.0.0-alpha
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Things you may want to cover to run the application locally:
 
-Things you may want to cover:
+## Install
 
-* Ruby version
-- ruby 3.2.2
+- RVM (Ruby Version Manager)
+    > `\curl -sSL https://get.rvm.io | bash`
+- Ruby 3.2.2
+    > `rvm install 3.2.2`
 - Rails 7.2.1
-- Rack version 3.1.7
+    > `gem install rails -v 7.2.1`
+- SQLite3
+    > `brew install sqlite3`
+- Install Bundler
+    > `gem install bundler`
 
-* System dependencies
+## System dependencies
 
-* Configuration
+- Node
+    > I assume you already have this.
+- After cloning the repository, run this
+    > `bundle install`
+    > This command installs all the required gems specified in the Gemfile
 
-* Database creation
+## Database
 
-* Database initialization
+- The application uses SQLite3 as the default database for development. To create the database, run:
+    > `rails db:create`
+- To set up the database schema and seed initial data (if any), run:
+    > `rails db:migrate`
+    > `rails db:seed`
 
-* How to run the test suite
+## Running the Application Locally
 
-* Services (job queues, cache servers, search engines, etc.)
+- Start the Rails server:
+    > `rails server`
 
-* Deployment instructions
+## How to run the test suite
 
-* ...
+- No test I am too lazy.
+    > Maybe in later versions.
+
+## Contributing
+
+1. Fork the repository.
+2. Create a new feature branch (git checkout -b feature/new-feature).
+3. Commit your changes (git commit -am 'Add new feature').
+4. Push to the branch (git push origin feature/new-feature).
+5. Create a new Pull Request.
+
+## Deployment instructions
+
+- Not yet.
