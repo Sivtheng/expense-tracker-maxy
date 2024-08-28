@@ -78,4 +78,10 @@ class ExpensesController < ApplicationController
     # Handle the case where @user is nil
     redirect_to login_path, alert: "You must be logged in to access this page." unless @user
   end
+
+  def find_expense
+    @expense = Expense.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to expenses_path, alert: "Expense not found."
+  end
 end
