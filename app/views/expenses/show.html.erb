@@ -1,24 +1,19 @@
-<h1>Expense Details</h1>
+<%= stylesheet_link_tag 'show-expense', media: 'all', 'data-turbo-track': 'reload' %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @expense.description %>
-</p>
+<div class="expense-container">
+  <div class="expense-box">
+    <h1>Expense Details</h1>
 
-<p>
-  <strong>Amount:</strong>
-  <%= @expense.amount %>
-</p>
+    <div class="expense-details">
+      <p><strong>Description:</strong> <%= @expense.description %></p>
+      <p><strong>Amount:</strong> <%= @expense.amount %></p>
+      <p><strong>Date:</strong> <%= @expense.date %></p>
+      <p><strong>Category:</strong> <%= @expense.category.name %></p>
+    </div>
 
-<p>
-  <strong>Date:</strong>
-  <%= @expense.date %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @expense.category.name %>
-</p>
-
-<%= link_to 'Edit', edit_expense_path(@expense) %> |
-<%= link_to 'Back', expenses_path %>
+    <div class="actions">
+      <%= link_to 'Edit', edit_expense_path(@expense), class: 'btn btn-primary' %> |
+      <%= link_to 'Back', expenses_path, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+</div>
