@@ -17,17 +17,17 @@
 
     <%= form_with(model: @expense, local: true) do |form| %>
       <div class="field">
-        <%= form.label :amount %>
+        <%= form.label :amount, "Amount ($)"%>
         <%= form.number_field :amount, step: :any %>
       </div>
 
       <div class="field">
-        <%= form.label :description %>
+        <%= form.label :description, "Description"%>
         <%= form.text_field :description %>
       </div>
 
       <div class="field">
-        <%= form.label :date %>
+        <%= form.label :date, "Date" %>
         <%= form.date_field :date %>
       </div>
 
