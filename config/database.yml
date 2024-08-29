@@ -29,7 +29,7 @@ test:
 # ensure the database is located in a persisted volume.
 production:
   <<: *default
-  database: <%= ENV['meticulous-empathy'] %>
+  database: <%= ENV['postgres://username:password@host:port/database_name'] %>
   username: <%= ENV['postgres'] %>
   password: <%= ENV['CupTlekoPdYWgJufsSfvGzEdJBeaRrCT'] %>
   host: <%= ENV['meticulous-empathy.railway.internal'] %>
