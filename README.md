@@ -1,4 +1,4 @@
-# Expense Tracker with Ruby on Rails, version 1.0.0-alpha
+# Expense Tracker with Ruby on Rails, version 1.0.1-alpha
 
 Things you may want to cover to run the application locally:
 
