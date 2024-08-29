@@ -33,3 +33,8 @@ production:
   database: railwayapp_production
   username: railwayapp
   password: <%= ENV["RAILWAYAPP_DATABASE_PASSWORD"] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  url: <%= ENV['DATABASE_URL'] %>
