@@ -29,8 +29,7 @@ test:
 # ensure the database is located in a persisted volume.
 production:
   <<: *default
-  database: <%= ENV['postgresql://postgres:CupTlekoPdYWgJufsSfvGzEdJBeaRrCT@meticulous-empathy.railway.internal:5432/railway] %>
-  username: <%= ENV['postgres'] %>
-  password: <%= ENV['CupTlekoPdYWgJufsSfvGzEdJBeaRrCT'] %>
-  host: <%= ENV['meticulous-empathy.railway.internal'] %>
-  port: <%= ENV['5432'] %>
+  url: <%= ENV["DATABASE_URL"] %>
+  database: railwayapp_production
+  username: railwayapp
+  password: <%= ENV["RAILWAYAPP_DATABASE_PASSWORD"] %>
