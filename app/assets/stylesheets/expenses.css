@@ -169,3 +169,34 @@ a:visited {
 .monthly-budget-info p {
     margin: 5px 0; /* Spacing for paragraphs */
 }
+
+/* Style for the header controls container */
+.header-controls {
+    display: flex; /* Flexbox to align items in a row */
+    align-items: center; /* Center items vertically */
+    justify-content: flex-start; /* Align items to the left */
+    margin-bottom: 20px; /* Space below the container */
+}
+
+/* Update button container styles */
+.new-expense-button-container {
+    margin-right: 20px; /* Space between the button and the currency toggle */
+}
+
+/* Update currency toggle styles */
+.currency-toggle {
+    display: flex; /* Flexbox for inline elements */
+    align-items: center; /* Center items vertically */
+}
+
+/* Separator styling */
+.separator {
+    color: #ECDFCC; /* Separator color */
+    margin: 0 10px; /* Space around the separator */
+}
+
+.currency-symbol {
+    font-size: 16px; /* Ensure the font size is consistent */
+    font-weight: normal; /* Use normal font weight for consistency */
+    vertical-align: middle; /* Align the currency symbol vertically */
+}

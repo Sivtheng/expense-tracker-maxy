@@ -2,50 +2,74 @@
 
 <div class="expenses-container">
   <div class="expenses-header">
-    <h1 class="expenses-title">Expenses Tracker (version 1.0.0-alpha)</h1>
+    <h1 class="expenses-title">Expenses Tracker (version 1.0.1-alpha)</h1>
     <%= form_with(url: logout_path, method: :post) do %>
       <%= submit_tag 'Logout', class: 'logout' %>
     <% end %>
   </div>
 
-  <!-- Monthly Budget Information -->
+  <!-- Monthly Budget Information --> 
+  <%# This is so fucking hard coded in. oh my god %>
   <div class="monthly-budget-info">
     <h2>Summary for <%= Date::MONTHNAMES[@month] %> <%= @year %>
       <%= link_to '(Change Month)', change_month_path, class: 'btn-month' %>
     </h2>
-    <p>Budget: <%= number_to_currency(@monthly_budget.budget || 0, precision: 2) %> 
+    <p>Budget: <%= number_to_currency(@monthly_budget.budget || 0, unit: "$", precision: 2) %> 
       <%= link_to '(Add/Update Budget)', edit_budget_path(month: @month, year: @year), class: 'btn-budget' %>
     </p>
-    <p>Total Spent: <%= number_to_currency(@total_spent || 0, precision: 2) %></p>
-      <% leftover = (@monthly_budget.budget || 0) - (@total_spent || 0) %>
-    <p>Leftover: <%= leftover >= 0 ? number_to_currency(leftover, precision: 2) : 'Over Budget' %></p>
+    <% if @currency == "KHR" %>
+      <% total_spent_dollars = @total_spent / 4000.0 %>
+    <% else %>
+      <% total_spent_dollars = @total_spent %>
+    <% end %>
+    <p>Total Spent: <%= number_to_currency(total_spent_dollars, unit: "$", precision: 2) %></p>
+    <% leftover = (@monthly_budget.budget || 0) - total_spent_dollars %>
+    <p>Leftover: <%= leftover >= 0 ? number_to_currency(leftover, unit: "$", precision: 2) : 'Over Budget' %></p>
   </div>
 
-
-  <div class="new-expense-button-container">
-    <%= link_to 'New Expense', new_expense_path, class: 'new-expense-button' %>
+  <div class="header-controls">
+    <div class="new-expense-button-container">
+      <%= link_to 'New Expense', new_expense_path, class: 'new-expense-button' %>
+    </div>
+    <div class="currency-toggle">
+      <div class="btn-month">
+        <%= link_to "Change to USD", expenses_path(year: @year, month: @month, currency: "USD"), class: @currency == "USD" ? "active" : "" %>
+      </div>
+      <div class="separator">|</div>
+      <div class="btn-month">
+        <%= link_to "Change to KHR", expenses_path(year: @year, month: @month, currency: "KHR"), class: @currency == "KHR" ? "active" : "" %>
+      </div>
+    </div>
   </div>
 
   <table class="expenses-table">
     <thead>
       <tr>
         <th>Description</th>
-        <th>Amount</th>
+        <th>Amount (<%= @currency == "USD" ? "$" : "៛" %>)
+        </th>
         <th>Date</th>
         <th>Category</th>
         <th>Actions</th>
       </tr>
     </thead>
-    <tbody>
+  <tbody>
       <% @expenses.each do |expense| %>
         <tr>
           <td><%= expense.description %></td>
-          <td><%= number_to_currency(expense.amount, precision: 2) %></td>
-          <td><%= expense.date %></td>
-          <td><%= expense.category.name %></td>
-          <td class="edit-destroy">
-            <%= link_to 'Edit', edit_expense_path(expense), class: 'btn-edit' %> |
-            <%= link_to 'Delete', confirm_delete_expense_path(expense), class: 'btn-delete' %>
+          <td>
+            <% if @currency == "KHR" %>
+              <!-- Using `html_safe` on concatenated strings for currency symbol and formatted amount -->
+              <%= "<span class='currency-symbol'>៛</span> #{number_with_delimiter(expense.amount, delimiter: ',')}".html_safe %>
+            <% else %>
+              <%= number_to_currency(expense.amount, unit: "$") %>
+            <% end %>
+          </td>
+          <td><%= expense.date.strftime("%Y-%m-%d") %></td>
+          <td><%= expense.category.name if expense.category.present? %></td>
+          <td>
+            <%= link_to 'Edit', edit_expense_path(expense), class: 'btn-edit'%> |
+            <%= link_to 'Delete', confirm_delete_expense_path(expense), class: 'btn-delete'%>
           </td>
         </tr>
       <% end %>

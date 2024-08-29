@@ -14,10 +14,31 @@ class ExpensesController < ApplicationController
     # Format month to always have two digits
     formatted_month = @month.to_s.rjust(2, "0")
 
-    # Use strftime for SQLite-compatible date extraction
+    # Determine the selected currency
+    @currency = params[:currency] || "USD"
+
+    # Fetch expenses for the current user and the specified month and year
     @expenses = current_user.expenses.where("strftime('%Y', date) = ? AND strftime('%m', date) = ?", @year.to_s, formatted_month)
+
+    # Ensure @expenses is an array to avoid nil errors
+    @expenses = @expenses.to_a
+
+    # Convert expenses if currency is KHR
+    if @currency == "KHR"
+      @expenses.each do |expense|
+        expense.amount = expense.amount * 4000 # Convert to KHR
+      end
+    end
+
     @monthly_budget = current_user.monthly_budgets.find_or_initialize_by(month: @month, year: @year)
-    @total_spent = @expenses.sum(:amount) || 0
+
+    # Calculate the total spent in the selected currency
+    @total_spent = @expenses.sum(&:amount)
+  end
+
+  # Helper method to convert USD to KHR
+  def convert_to_riel(amount_in_usd)
+    (amount_in_usd * 4000).round
   end
 
   def show
