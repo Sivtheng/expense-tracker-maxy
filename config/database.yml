@@ -29,4 +29,8 @@ test:
 # ensure the database is located in a persisted volume.
 production:
   <<: *default
-  # database: path/to/persistent/storage/production.sqlite3
+  database: <%= ENV['meticulous-empathy'] %>
+  username: <%= ENV['postgres'] %>
+  password: <%= ENV['CupTlekoPdYWgJufsSfvGzEdJBeaRrCT'] %>
+  host: <%= ENV['meticulous-empathy.railway.internal'] %>
+  port: <%= ENV['5432'] %>
