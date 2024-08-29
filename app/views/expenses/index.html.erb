@@ -59,10 +59,9 @@
           <td><%= expense.description %></td>
           <td>
             <% if @currency == "KHR" %>
-              <!-- Using `html_safe` on concatenated strings for currency symbol and formatted amount -->
-              <%= "<span class='currency-symbol'>៛</span> #{number_with_delimiter(expense.amount, delimiter: ',')}".html_safe %>
+              <%= "<span class='currency-symbol'>៛</span> #{number_with_precision(expense.amount, precision: 2, delimiter: ',')}".html_safe %>
             <% else %>
-              <%= number_to_currency(expense.amount, unit: "$") %>
+              <%= number_to_currency(expense.amount, unit: "$", precision: 2) %>
             <% end %>
           </td>
           <td><%= expense.date.strftime("%Y-%m-%d") %></td>
