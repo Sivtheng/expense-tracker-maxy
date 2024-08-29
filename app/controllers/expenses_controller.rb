@@ -18,7 +18,9 @@ class ExpensesController < ApplicationController
     @currency = params[:currency] || "USD"
 
     # Fetch expenses for the current user and the specified month and year
-    @expenses = current_user.expenses.where("strftime('%Y', date) = ? AND strftime('%m', date) = ?", @year.to_s, formatted_month)
+    @expenses = current_user.expenses
+    .where("strftime('%Y', date) = ? AND strftime('%m', date) = ?", @year.to_s, formatted_month)
+    .order(date: :asc) # Order expenses by date ascendingly
 
     # Ensure @expenses is an array to avoid nil errors
     @expenses = @expenses.to_a
