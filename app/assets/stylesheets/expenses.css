@@ -7,10 +7,14 @@ body {
     background-color: #1E201E;
 }
 
-.expenses-container {
+.content-wrapper {
+    min-height: 100vh; /* Ensures the content fills the viewport */
     display: flex;
     flex-direction: column;
-    height: 100vh;
+}
+
+.expenses-container {
+    flex-grow: 1; /* Allows the main content to take up the available space */
     padding: 20px;
     box-sizing: border-box;
 }
@@ -53,6 +57,7 @@ body {
     padding: 20px;
     max-height: 100px; /* Adjust this value as needed */
     color: #ECDFCC;
+    margin-bottom: 50px;
 }
 
 .expenses-title {
@@ -66,6 +71,7 @@ table {
     border-collapse: collapse;
     border: 1px solid #697565;
     margin-top: 30px;
+    margin-bottom: 100px;
 }
 
 thead {
